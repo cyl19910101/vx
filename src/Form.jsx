@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { createPost } from "./posts/actions";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { push } from "react-router-redux";
 
 class Form extends Component {
   state = {
@@ -13,6 +15,7 @@ class Form extends Component {
     if (title !== "" && content !== "") {
       this.props.dispatch(createPost({ title, content }));
       this.setState({ title: "", content: "" });
+      this.props.dispatch(push("/"));
     }
   };
 
@@ -37,6 +40,7 @@ class Form extends Component {
           />
         </div>
         <button onClick={this.onCreate}>create</button>
+        <Link to="/">Cancel</Link>
       </div>
     );
   }

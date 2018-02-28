@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { Provider } from "react-redux";
 import { ConnectedRouter } from "react-router-redux";
 import { store, history } from "./configureStore";
-import PostsView from "./PostsView";
 import Form from "./Form";
+import "./App.css";
+import Home from "./Home";
+import { Route } from "react-router-dom";
 
 class App extends Component {
   render() {
@@ -11,8 +13,10 @@ class App extends Component {
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <div>
-            <Form />
-            <PostsView />
+            <div className="nav-bar">Posts</div>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/create" component={Form} />
+            <Route exact path="/post/:id" component={Form} />
           </div>
         </ConnectedRouter>
       </Provider>
