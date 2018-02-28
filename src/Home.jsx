@@ -6,7 +6,9 @@ export default function Home() {
   return (
     <div>
       <div className="action-bar">
-        <Link to="/create">Create Post</Link>
+        <Link to="/create" className="success">
+          Create Post
+        </Link>
       </div>
       <PostsView />
     </div>

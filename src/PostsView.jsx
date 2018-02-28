@@ -6,25 +6,18 @@ import { Link } from "react-router-dom";
 function PostsView({ posts, dispatch }) {
   return (
     <div>
-      {Object.keys(posts).map(id => (
-        <div key={id}>
-          <p>title : {posts[id].title}</p>
-          <p>content : {posts[id].content}</p>
-          <button onClick={() => dispatch(deletePost({ id }))}>delete</button>
-          <Link to={`/post/${id}`}>Edit Post</Link>
-          {/* <button
-            onClick={() =>
-              dispatch(
-                editPost({
-                  id,
-                  title: "" + Math.random(),
-                  content: "" + Math.random()
-                })
-              )
-            }
-          >
-            edit
-          </button> */}
+      {Object.keys(posts).map((id, index) => (
+        <div key={id} className="item">
+          <span className="order">{index + 1}</span>
+          <span>{posts[id].title}</span>
+          <div className="actions">
+            <Link to={`/post/${id}`} className="action">
+              Edit Post
+            </Link>
+            <a onClick={() => dispatch(deletePost({ id }))} className="action">
+              delete
+            </a>
+          </div>
         </div>
       ))}
     </div>

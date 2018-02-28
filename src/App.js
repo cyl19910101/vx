@@ -5,6 +5,7 @@ import { store, history } from "./configureStore";
 import Form from "./Form";
 import "./App.css";
 import Home from "./Home";
+import NavBar from "./NavBar";
 import { Route } from "react-router-dom";
 
 class App extends Component {
@@ -13,7 +14,7 @@ class App extends Component {
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <div>
-            <div className="nav-bar">Posts</div>
+            <NavBar />
             <Route exact path="/" component={Home} />
             <Route exact path="/create" component={Form} />
             <Route exact path="/post/:id" component={Form} />
